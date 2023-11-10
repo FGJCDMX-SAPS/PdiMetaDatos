@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("PdiMetaDatos")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Software para Visualización de Metadatos de archivos de imagen. Autor: Adrian Enrique Cardenas Campos")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("FGJ CDMX - PDI")]
 [assembly: AssemblyProduct("PdiMetaDatos")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]

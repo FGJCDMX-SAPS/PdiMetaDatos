@@ -36,18 +36,20 @@
             this.Archivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainerImagenMetadatos = new System.Windows.Forms.SplitContainer();
             this.gbVistaPreviaImagen = new System.Windows.Forms.GroupBox();
+            this.pbPreview = new System.Windows.Forms.PictureBox();
             this.gbMetadatos = new System.Windows.Forms.GroupBox();
             this.dgvMetadatos = new System.Windows.Forms.DataGridView();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Etiqueta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelOpciones = new System.Windows.Forms.Panel();
-            this.cBRecursivo = new System.Windows.Forms.CheckBox();
+            this.labelProgreso = new System.Windows.Forms.Label();
+            this.pBProcesoArchivos = new System.Windows.Forms.ProgressBar();
             this.bAcercaDe = new System.Windows.Forms.Button();
-            this.pbPreview = new System.Windows.Forms.PictureBox();
             this.bExportarTodos = new System.Windows.Forms.Button();
             this.bExportarActual = new System.Windows.Forms.Button();
+            this.cBRecursivo = new System.Windows.Forms.CheckBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tlpPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrincipal)).BeginInit();
             this.splitContainerPrincipal.Panel1.SuspendLayout();
@@ -60,10 +62,10 @@
             this.splitContainerImagenMetadatos.Panel2.SuspendLayout();
             this.splitContainerImagenMetadatos.SuspendLayout();
             this.gbVistaPreviaImagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             this.gbMetadatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetadatos)).BeginInit();
             this.panelOpciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpPrincipal
@@ -166,6 +168,16 @@
             this.gbVistaPreviaImagen.TabStop = false;
             this.gbVistaPreviaImagen.Text = "Vista Previa";
             // 
+            // pbPreview
+            // 
+            this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbPreview.Location = new System.Drawing.Point(3, 16);
+            this.pbPreview.Name = "pbPreview";
+            this.pbPreview.Size = new System.Drawing.Size(520, 158);
+            this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPreview.TabIndex = 0;
+            this.pbPreview.TabStop = false;
+            // 
             // gbMetadatos
             // 
             this.gbMetadatos.Controls.Add(this.dgvMetadatos);
@@ -213,16 +225,10 @@
             this.Descripción.Name = "Descripción";
             this.Descripción.ReadOnly = true;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 459);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(801, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // panelOpciones
             // 
+            this.panelOpciones.Controls.Add(this.labelProgreso);
+            this.panelOpciones.Controls.Add(this.pBProcesoArchivos);
             this.panelOpciones.Controls.Add(this.bAcercaDe);
             this.panelOpciones.Controls.Add(this.bExportarTodos);
             this.panelOpciones.Controls.Add(this.bExportarActual);
@@ -233,17 +239,20 @@
             this.panelOpciones.Size = new System.Drawing.Size(794, 94);
             this.panelOpciones.TabIndex = 1;
             // 
-            // cBRecursivo
+            // labelProgreso
             // 
-            this.cBRecursivo.AutoSize = true;
-            this.cBRecursivo.Checked = true;
-            this.cBRecursivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBRecursivo.Location = new System.Drawing.Point(8, 8);
-            this.cBRecursivo.Name = "cBRecursivo";
-            this.cBRecursivo.Size = new System.Drawing.Size(124, 17);
-            this.cBRecursivo.TabIndex = 0;
-            this.cBRecursivo.Text = "Incluir Subdirectorios";
-            this.cBRecursivo.UseVisualStyleBackColor = true;
+            this.labelProgreso.AutoSize = true;
+            this.labelProgreso.Location = new System.Drawing.Point(8, 52);
+            this.labelProgreso.Name = "labelProgreso";
+            this.labelProgreso.Size = new System.Drawing.Size(0, 13);
+            this.labelProgreso.TabIndex = 5;
+            // 
+            // pBProcesoArchivos
+            // 
+            this.pBProcesoArchivos.Location = new System.Drawing.Point(8, 68);
+            this.pBProcesoArchivos.Name = "pBProcesoArchivos";
+            this.pBProcesoArchivos.Size = new System.Drawing.Size(253, 23);
+            this.pBProcesoArchivos.TabIndex = 4;
             // 
             // bAcercaDe
             // 
@@ -257,16 +266,7 @@
             this.bAcercaDe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bAcercaDe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bAcercaDe.UseVisualStyleBackColor = true;
-            // 
-            // pbPreview
-            // 
-            this.pbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbPreview.Location = new System.Drawing.Point(3, 16);
-            this.pbPreview.Name = "pbPreview";
-            this.pbPreview.Size = new System.Drawing.Size(520, 158);
-            this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPreview.TabIndex = 0;
-            this.pbPreview.TabStop = false;
+            this.bAcercaDe.Click += new System.EventHandler(this.bAcercaDe_Click);
             // 
             // bExportarTodos
             // 
@@ -280,6 +280,7 @@
             this.bExportarTodos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bExportarTodos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bExportarTodos.UseVisualStyleBackColor = true;
+            this.bExportarTodos.Click += new System.EventHandler(this.bExportarTodos_Click);
             // 
             // bExportarActual
             // 
@@ -293,6 +294,27 @@
             this.bExportarActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bExportarActual.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bExportarActual.UseVisualStyleBackColor = true;
+            this.bExportarActual.Click += new System.EventHandler(this.bExportarActual_Click);
+            // 
+            // cBRecursivo
+            // 
+            this.cBRecursivo.AutoSize = true;
+            this.cBRecursivo.Checked = true;
+            this.cBRecursivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBRecursivo.Location = new System.Drawing.Point(8, 8);
+            this.cBRecursivo.Name = "cBRecursivo";
+            this.cBRecursivo.Size = new System.Drawing.Size(124, 17);
+            this.cBRecursivo.TabIndex = 0;
+            this.cBRecursivo.Text = "Incluir Subdirectorios";
+            this.cBRecursivo.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 459);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(801, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // Form1
             // 
@@ -318,11 +340,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerImagenMetadatos)).EndInit();
             this.splitContainerImagenMetadatos.ResumeLayout(false);
             this.gbVistaPreviaImagen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
             this.gbMetadatos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetadatos)).EndInit();
             this.panelOpciones.ResumeLayout(false);
             this.panelOpciones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,6 +371,8 @@
         private System.Windows.Forms.Button bExportarTodos;
         private System.Windows.Forms.Button bExportarActual;
         private System.Windows.Forms.Button bAcercaDe;
+        private System.Windows.Forms.Label labelProgreso;
+        private System.Windows.Forms.ProgressBar pBProcesoArchivos;
     }
 }
 
